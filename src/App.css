@@ -1,9 +1,24 @@
 body {
-  background-color: red;
+  background-color: rgb(176, 207, 168);
 }
 
 .header {
-  border: solid rgb(0, 132, 255);
-  background-color: rgb(113, 186, 255);
+  border: solid rgb(97, 158, 216);
+  background-color: rgb(186, 219, 250);
   text-align: center;
+}
+
+#all-article-imgs {
+  width: 100%;
+}
+
+li {
+  list-style: none;
+}
+
+.articles {
+  border: solid red;
+  background-color: rgb(255, 121, 143);
+  padding-left: 10px;
+  padding-right: 10px;
 }
