@@ -23,24 +23,16 @@ const Comments = () => {
 
   return (
     <>
-        
       <ul className="articles">
       <div className="single-item">
+
       <h2>{article.title}</h2>
-      <img
-        id="all-article-imgs"
-        src={article.article_img_url}
-        alt={`${article.title}`}
-      />
       <p>Author: {article.author}</p>
-      <p>{article.body}</p>
       <p>Comments: {article.comment_count}</p>
-      <p>
-        Created: {article.created_at ? article.created_at.slice(0, 10) : <></>}
-      </p>
-      <p>Topic: {article.topic}</p>
+
       <p>Votes: {article.votes}</p>
     </div>
+    <h2 id="comments-title">Comments</h2>
         {comments.map((comment) => {
           return <CommentCard comment={comment} key={comment.comment_id} />;
         })}

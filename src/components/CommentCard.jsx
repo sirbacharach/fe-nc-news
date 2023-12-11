@@ -1,6 +1,6 @@
 const CommentCard = ({ comment }) => {
   return (
-    <li>
+    <li className="comments">
       <p>Created: {comment.created_at}</p>
       <p>Author: {comment.author}</p>
       <p>{comment.body}</p>

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getSingleArticle } from "./api";
+import { Link } from "react-router-dom";
 
 const SingleArticle = () => {
   const [article, setArticle] = useState({});
@@ -25,7 +26,9 @@ const SingleArticle = () => {
       />
       <p>Author: {article.author}</p>
       <p>{article.body}</p>
-      <p>Comments: {article.comment_count}</p>
+      <Link to={`/articles/${article.article_id}/comments`}>
+        <p>Comments: {article.comment_count}</p>
+      </Link>
       <p>
         Created: {article.created_at ? article.created_at.slice(0, 10) : <></>}
       </p>
