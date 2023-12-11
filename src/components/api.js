@@ -14,4 +14,10 @@ const getSingleArticle = (article_id) => {
   });
 };
 
-export { getAllArticles, getSingleArticle };
+const getAllComments = (article_id) => {
+  return api.get(`/api/articles/${article_id}/comments`).then((response) => {
+    return response.data.articleComments;
+  });
+};
+
+export { getAllArticles, getSingleArticle, getAllComments };
