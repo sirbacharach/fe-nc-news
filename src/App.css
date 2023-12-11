@@ -22,3 +22,9 @@ li {
   padding-left: 10px;
   padding-right: 10px;
 }
+
+#status-msg {
+  text-align: center;
+  font-size: larger;
+  font-weight: bold;
+}
