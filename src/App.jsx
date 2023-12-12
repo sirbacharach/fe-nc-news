@@ -12,11 +12,7 @@ function App() {
       <Routes>
         <Route path="/articles" element={<Articles />} />
         <Route path="/articles/:article_id" element={<SingleArticle />} />
-        <Route
-          exact
-          path="/articles/:article_id/comments"
-          element={<Comments />}
-        />
+        {/* <Route path="/articles/:article_id/comments" element={<Comments />} /> */}
         <Route exact path="/" element={<Articles />} />
       </Routes>
     </>
