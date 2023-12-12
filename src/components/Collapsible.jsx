@@ -8,8 +8,10 @@ function toggleIsHidden() {
 }
 return (
     <div>
-        <button onClick={toggleIsHidden}></button>
-        {isHidden ? null : chidren}
+        <button id="collapsible-button" onClick={toggleIsHidden}>
+        {isHidden? "Show" : "Hide"} {descriptor}
+        </button>
+        {isHidden ? null : children}
     </div>
 )
 

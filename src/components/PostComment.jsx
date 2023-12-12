@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-
+import Collapsible from "./Collapsible";
 
 const PostComment = () => {
 
@@ -15,23 +15,28 @@ const handleSubmit = (event) => {
 };
 
 return (
+  <>
+  
+    <div>
   <form className="comment-form" onSubmit={handleSubmit}>
-    Fill in the form to post your comment:
+    Fill in the form to post a comment:
     <label className="form-input" id="name-input-label">
-      Comment:
       <textarea
         type="text"
         placeholder="type your comment here..."
         id="comment-input"
-        rows="4" cols="43"
+
         value={comment}
         onChange={(event) => {
         setComment(event.target.value);
         }}
       />
     </label>
-
+    <button id="submit-button">Submit</button>
   </form>
+  </div>
+
+  </>
   )
 };
 
