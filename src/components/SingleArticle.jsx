@@ -21,9 +21,16 @@ const SingleArticle = () => {
     articleWithNewVotes.votes--;
     setArticle(articleWithNewVotes);
     const newVotes = { inc_votes: -1 };
+<<<<<<< HEAD
     patchArticle(article.article_id, newVotes).catch(() => {
       setArticle(article);
     });
+=======
+    patchArticle(article.article_id, newVotes)
+      .catch(() => {
+        setArticle(article);
+      });
+>>>>>>> main
   };
 
   const UpVote = () => {
@@ -31,9 +38,16 @@ const SingleArticle = () => {
     articleWithNewVotes.votes++;
     setArticle(articleWithNewVotes);
     const newVotes = { inc_votes: 1 };
+<<<<<<< HEAD
     patchArticle(article.article_id, newVotes).catch(() => {
       setArticle(article);
     });
+=======
+    patchArticle(article.article_id, newVotes)
+      .catch(() => {
+        setArticle(article);
+      });
+>>>>>>> main
   };
 
   return (
@@ -44,6 +58,10 @@ const SingleArticle = () => {
       <p>{article.author}</p>
       <p>{article.body}</p>
       <p>Topic: {article.topic}</p>
+<<<<<<< HEAD
+=======
+      <p>Comments: {article.comment_count}</p>
+>>>>>>> main
       <p>Votes: {article.votes}</p>
       <button className="vote-button" onClick={DownVote}>
         Down Vote
