@@ -6,7 +6,7 @@ const Header = () => {
       <h1>NC-NEWS</h1>
       <h2>Users</h2>
       <Link to={"/articles"}>
-        <nav>Articles</nav>
+        <h2>Articles</h2>
       </Link>
 
       <h2>Topics</h2>

@@ -2,6 +2,7 @@ import "./App.css";
 import Header from "./components/Header";
 import Articles from "./components/Articles";
 import SingleArticle from "./components/SingleArticle";
+import Comments from "./components/Comments";
 import { Routes, Route } from "react-router-dom";
 
 function App() {
@@ -11,6 +12,7 @@ function App() {
       <Routes>
         <Route path="/articles" element={<Articles />} />
         <Route path="/articles/:article_id" element={<SingleArticle />} />
+        {/* <Route path="/articles/:article_id/comments" element={<Comments />} /> */}
         <Route exact path="/" element={<Articles />} />
       </Routes>
     </>
