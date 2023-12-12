@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getSingleArticle } from "./api";
+import { patchArticle } from "./api";
+
 const SingleArticle = () => {
   const [article, setArticle] = useState({});
   const [isLoading, setIsLoading] = useState(true);
@@ -9,10 +11,32 @@ const SingleArticle = () => {
   useEffect(() => {
     getSingleArticle(article_id).then((response) => {
       setArticle(response);
-      setIsLoading(false)
+      setIsLoading(false);
     });
   }, []);
-if(isLoading) return <p id="status-msg">Content Loading....</p>;
+  if (isLoading) return <p id="status-msg">Content Loading....</p>;
+
+  const DownVote = () => {
+    const articleWithNewVotes = { ...article };
+    articleWithNewVotes.votes--;
+    setArticle(articleWithNewVotes);
+    const newVotes = { inc_votes: -1 };
+    patchArticle(article.article_id, newVotes)
+      .catch(() => {
+        setArticle(article);
+      });
+  };
+
+  const UpVote = () => {
+    const articleWithNewVotes = { ...article };
+    articleWithNewVotes.votes++;
+    setArticle(articleWithNewVotes);
+    const newVotes = { inc_votes: 1 };
+    patchArticle(article.article_id, newVotes)
+      .catch(() => {
+        setArticle(article);
+      });
+  };
 
   return (
     <div className="single-item">
@@ -26,6 +50,13 @@ if(isLoading) return <p id="status-msg">Content Loading....</p>;
       </p>
       <p>Topic: {article.topic}</p>
       <p>Votes: {article.votes}</p>
+
+      <button className="vote-button" onClick={DownVote}>
+        Down Vote
+      </button>
+      <button className="vote-button" onClick={UpVote}>
+        Up Vote
+      </button>
     </div>
   );
 };

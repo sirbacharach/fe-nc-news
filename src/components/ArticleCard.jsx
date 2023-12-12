@@ -14,9 +14,11 @@ const ArticleCard = ({ article }) => {
         src={article.article_img_url}
         alt={`the article "${article.title}"`}
       />
-      <p>Comments: {article.comment_count}</p>
+       <p>Comments: {article.comment_count}</p>
+            
     </li>
     </Link>
+    
   );
 };
 
