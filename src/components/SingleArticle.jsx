@@ -3,6 +3,8 @@ import { useParams } from "react-router-dom";
 import { getSingleArticle } from "./api";
 import { patchArticle } from "./api";
 import PostComment from "./PostComment";
+import Comments from "./Comments";
+
 
 const SingleArticle = () => {
   const [article, setArticle] = useState({});
@@ -41,6 +43,7 @@ const SingleArticle = () => {
   };
 
   return (
+    <>
     <div className="single-item">
       <h2>{article.title}</h2>
       <img id="all-article-imgs" src={article.article_img_url} alt={`${article.title}`} />
@@ -58,6 +61,8 @@ const SingleArticle = () => {
       </button>
       <PostComment/>
     </div>
+    <Comments/>
+    </>
   );
 };
 

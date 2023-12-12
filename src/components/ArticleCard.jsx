@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 const ArticleCard = ({ article }) => {
   return (
     <li>
+
       <Link
         to={`/articles/${article.article_id}`}
         className="all-articles"
@@ -22,6 +23,7 @@ const ArticleCard = ({ article }) => {
       </Link>
     </li>
   );
+
 };
 
 export default ArticleCard;
