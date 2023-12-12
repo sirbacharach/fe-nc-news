@@ -18,14 +18,12 @@ if(isLoading) return <p id="status-msg">Content Loading....</p>;
     <div className="single-item">
       <h2>{article.title}</h2>
       <img src={article.article_img_url} alt={`${article.title}`} />
-      <p>Author: {article.author}</p>
+      <p>{article.created_at ? article.created_at.slice(0, 10) : <></>}</p>
+      <p>{article.author}</p>
       <p>{article.body}</p>
-      <p>Comments: {article.comment_count}</p>
-      <p>
-        Created: {article.created_at ? article.created_at.slice(0, 10) : <></>}
-      </p>
       <p>Topic: {article.topic}</p>
-      <p>Votes: {article.votes}</p>
+      <p>Comments: {article.comment_count}</p>
+            <p>Votes: {article.votes}</p>
     </div>
   );
 };
