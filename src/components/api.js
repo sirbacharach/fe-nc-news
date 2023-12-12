@@ -13,8 +13,6 @@ const getSingleArticle = (article_id) => {
     return response.data.article;
   });
 };
-
-<<<<<<< HEAD
 const getAllUsers = () => {
   return api.get("/api/users").then((response) => {
     return response.data.allUsers;
@@ -33,11 +31,3 @@ const patchArticle = (article_id, votes) => {
   };
 
   export {getAllArticles, getSingleArticle, getAllUsers, getAllComments, patchArticle}
-=======
-const patchArticle = (article_id, votes) => {
-return api.patch(`/api/articles/${article_id}`, votes).then((response) => {
-})
-};
-
-export { getAllArticles, getSingleArticle, patchArticle };
->>>>>>> main
