@@ -14,4 +14,10 @@ const getSingleArticle = (article_id) => {
   });
 };
 
-export { getAllArticles, getSingleArticle };
+const getAllUsers = () => {
+  return api.get("/api/users").then((response) => {
+    return response.data.allUsers;
+  });
+};
+
+export { getAllArticles, getSingleArticle, getAllUsers };

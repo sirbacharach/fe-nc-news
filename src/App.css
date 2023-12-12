@@ -31,3 +31,14 @@ li {
   font-size: larger;
   font-weight: bold;
 }
+
+.users {
+  border: solid white;
+  background-color: rgb(176, 207, 168);
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+#user {
+  background-color: white;
+}
