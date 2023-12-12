@@ -1,16 +1,10 @@
-import { useContext, useEffect, useState } from "react";
-import { UserContext } from "./UserContext";
+import { useEffect, useState } from "react";
 import { getAllUsers } from "./api";
 import UserCard from "./UserCard";
 
 const Users = () => {
   const [users, setUsers] = useState([]);
-  const { setUser } = useContext(UserContext);
   const [isLoading, setIsLoading] = useState(true);
-
-  function handleUserClick(username) {
-    setUser(username);
-  }
 
   useEffect(() => {
     getAllUsers().then((users) => {
