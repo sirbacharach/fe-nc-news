@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getSingleArticle } from "./api";
 import { patchArticle } from "./api";
+import PostComment from "./PostComment";
 
 const SingleArticle = () => {
   const [article, setArticle] = useState({});
@@ -55,6 +56,7 @@ const SingleArticle = () => {
       <button className="vote-button" onClick={UpVote}>
         Up Vote
       </button>
+      <PostComment/>
     </div>
   );
 };
