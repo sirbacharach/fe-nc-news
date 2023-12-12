@@ -26,8 +26,20 @@ const getAllComments = (article_id) => {
 };
 
 const patchArticle = (article_id, votes) => {
-  return api.patch(`/api/articles/${article_id}`, votes).then((response) => {
-  })
-  };
+  return api.patch(`/api/articles/${article_id}`, votes);
+};
 
-  export {getAllArticles, getSingleArticle, getAllUsers, getAllComments, patchArticle}
+const postComment = (article_id, comment) => {
+  return api.post(`/api/articles/900/comments`, comment).then((response)=>{
+ return response.data.addedComments[0]
+  })
+};
+
+export {
+  getAllArticles,
+  getSingleArticle,
+  getAllUsers,
+  getAllComments,
+  patchArticle,
+  postComment,
+};
