@@ -8,8 +8,11 @@ body {
   text-align: center;
 }
 
-#single-item {
-  background-color: green;
+.single-item {
+  border: solid red;
+  background-color: rgb(255, 121, 143);
+  padding-left: 10px;
+  padding-right: 10px;
 }
 #all-article-imgs {
   width: 100%;
@@ -17,13 +20,30 @@ body {
 
 li {
   list-style: none;
+  border: solid black;
+  margin-left: 0px;
+  margin-right: 0px;
+  margin-top: 2px;
+  padding: 5px;
+}
+
+.comments {
+  list-style: none;
+  background-color: rgb(179, 205, 178);
+  border: solid rgb(8, 131, 26);
+  margin-left: 0px;
+  margin-right: 0px;
+  margin-top: 2px;
+  padding: 5px;
 }
 
 .articles {
+  padding-top: 2px;
+  margin-top: 1px;
   border: solid red;
   background-color: rgb(255, 121, 143);
-  padding-left: 10px;
-  padding-right: 10px;
+  padding-left: 3px;
+  padding-right: 3px;
 }
 
 #status-msg {
@@ -41,4 +61,16 @@ li {
 
 #user {
   background-color: white;
+}
+.all-articles{
+  color: black;
+}
+
+#article-title {
+  text-align: center;
+}
+
+#comments-title {
+  text-align: center;
+  margin: 8px;
 }
