@@ -8,6 +8,9 @@ body {
   text-align: center;
 }
 
+#single-item {
+  background-color: green;
+}
 #all-article-imgs {
   width: 100%;
 }

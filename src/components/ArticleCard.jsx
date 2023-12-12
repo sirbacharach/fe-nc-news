@@ -1,5 +1,8 @@
+import { Link } from "react-router-dom";
+
 const ArticleCard = ({ article }) => {
   return (
+    <Link to={`/articles/${article.article_id}`} className="all-articles" style={{ textDecoration: 'none' }}>
     <li>
       <h2>{article.title}</h2>
       <p>Author: {article.author}</p>
@@ -13,6 +16,7 @@ const ArticleCard = ({ article }) => {
       />
       <p>Comments: {article.comment_count}</p>
     </li>
+    </Link>
   );
 };
 

@@ -8,4 +8,10 @@ const getAllArticles = () => {
   });
 };
 
-export { getAllArticles };
+const getSingleArticle = (article_id) => {
+  return api.get(`/api/articles/${article_id}`).then((response) => {
+    return response.data.article;
+  });
+};
+
+export { getAllArticles, getSingleArticle };
