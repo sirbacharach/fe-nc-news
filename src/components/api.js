@@ -20,4 +20,10 @@ const getAllComments = (article_id) => {
   });
 };
 
-export { getAllArticles, getSingleArticle, getAllComments };
+const patchArticle = (article_id, votes) => {
+return api.patch(`/api/articles/${article_id}`, votes).then((response) => {
+})
+};
+
+export { getAllArticles, getSingleArticle, patchArticle, getAllComments };
+
