@@ -28,6 +28,7 @@ const Comments = () => {
     <>
       <ul className="articles">
         <h2 id="comments-title">Comments</h2>
+        <button>Add Comment</button>
         {comments.map((comment) => {
           return <CommentCard comment={comment} key={comment.comment_id} />;
         })}
