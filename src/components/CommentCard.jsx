@@ -6,7 +6,7 @@ import { deleteComment } from "./api";
 const CommentCard = ({ comment }) => {
   const [isUsersComment, setIsUsersComment] = useState(false);
   const { user } = useContext(UserContext);
-  const [commentIsDeleted, setCommentIsDelted] = useState(false);
+  const [commentIsDeleted, setCommentIsDeleted] = useState(false);
 
   useEffect(() => {
     if (user === comment.author) {
@@ -22,7 +22,7 @@ const CommentCard = ({ comment }) => {
   }, [commentIsDeleted]);
 
   function handleUserClick(comment_id) {
-    setCommentIsDelted(true);
+    setCommentIsDeleted(true);
   }
 
   return (
