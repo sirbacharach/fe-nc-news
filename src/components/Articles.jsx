@@ -13,7 +13,7 @@ const Articles = () => {
     });
   }, []);
 
-  
+  if (isLoading) return <p id="status-msg">Articles Loading....</p>;
 
   return (
     <>
