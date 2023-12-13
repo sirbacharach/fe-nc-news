@@ -2,7 +2,8 @@ import { Link } from "react-router-dom";
 
 const ArticleCard = ({ article }) => {
   return (
-     <li>
+    <li>
+
       <Link
         to={`/articles/${article.article_id}`}
         className="all-articles"
@@ -21,7 +22,8 @@ const ArticleCard = ({ article }) => {
         <p>Comments: {article.comment_count}</p>
       </Link>
     </li>
-      );
+  );
+
 };
 
 export default ArticleCard;
