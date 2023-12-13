@@ -22,6 +22,7 @@ const PostComment = ({ comments, setComments }) => {
         .then((response) => {
           setComments((comments) => {
             setHasNetworkError(false);
+            setHasPosted(false)
             return [response, ...comments];
           });
         })
@@ -29,20 +30,24 @@ const PostComment = ({ comments, setComments }) => {
           setComments(originalComments);
           if (err.message === "Network Error") {
             setHasNetworkError(true);
+            setHasPosted(false)
           }
           if (err.message === "Request failed with status code 400") {
             alert("A users must be logged in to leave a comment.");
           }
         });
         setNewComment("")
+
     } else if (hasPosted === true) {
-      setIsEmptyComment(true);
+
     }
   }, [newComment]);
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    if (input === "") {setIsEmptyComment(true)}
+    setHasPosted(true)
+    if (input === "") {setIsEmptyComment(true)
+    setHasPosted(false)}
     else {setIsEmptyComment(false)}
     if (hasPosted === false) {
       setNewComment(input);
