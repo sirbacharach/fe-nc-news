@@ -64,3 +64,13 @@ li {
   text-align: center;
   margin: 8px;
 }
+
+.topics {
+  text-align: center;
+  padding-top: 2px;
+  margin-top: 1px;
+  border: solid red;
+  background-color: rgb(255, 121, 143);
+  padding-left: 3px;
+  padding-right: 3px;
+}
