@@ -13,6 +13,7 @@ const PostComment = ({ comments, setComments }) => {
   const [hasNetworkError, setHasNetworkError] = useState(false);
   const [isEmptyComment, setIsEmptyComment] = useState(false);
 
+
   useEffect(() => {
     const originalComments = [...comments];
     if (newComment !== "") {
@@ -20,7 +21,6 @@ const PostComment = ({ comments, setComments }) => {
       postComment(article_id, commentToPost)
         .then((response) => {
           setComments((comments) => {
-            setHasPosted(false);
             setHasNetworkError(false);
             return [response, ...comments];
           });
@@ -33,19 +33,18 @@ const PostComment = ({ comments, setComments }) => {
           if (err.message === "Request failed with status code 400") {
             alert("A users must be logged in to leave a comment.");
           }
-          setHasPosted(false);
         });
+        setNewComment("")
     } else if (hasPosted === true) {
       setIsEmptyComment(true);
-      setHasPosted(false);
     }
-  }, [newComment, hasPosted]);
+  }, [newComment]);
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    setIsEmptyComment(false);
+    if (input === "") {setIsEmptyComment(true)}
+    else {setIsEmptyComment(false)}
     if (hasPosted === false) {
-      setHasPosted(true);
       setNewComment(input);
       setInput("");
     }
@@ -60,7 +59,7 @@ const PostComment = ({ comments, setComments }) => {
           <></>
         )}
         {isEmptyComment ? (
-          <h2 id="network-error-msg">Unable to accept an empty comment.</h2>
+          <h2 id="empty-comment-msg">Unable to accept an empty comment.</h2>
         ) : (
           <></>
         )}
@@ -77,7 +76,7 @@ const PostComment = ({ comments, setComments }) => {
               }}
             />
           </label>
-          <button id="submit-button">Submit</button>
+          <button id="submit-button" disabled={hasPosted}>Submit</button>
         </form>
       </div>
     </>

@@ -31,16 +31,16 @@ const patchArticle = (article_id, votes) => {
 
 const getAllTopics = () => {
   return api.get("/api/topics").then((response) => {
-
     return response.data;
   });
 };
 
 const postComment = (article_id, comment) => {
-  return api.post(`/api/articles/${article_id}/comments`, comment).then((response)=>{
-    console.log(response)
- return response.data.addedComments[0]
-  })
+  return api
+    .post(`/api/articles/${article_id}/comments`, comment)
+    .then((response) => {
+      return response.data.addedComments[0];
+    });
 };
 
 export {
