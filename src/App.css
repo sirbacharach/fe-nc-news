@@ -13,7 +13,9 @@ body {
   background-color: rgb(255, 121, 143);
   padding-left: 10px;
   padding-right: 10px;
+  padding-bottom: 10px;
 }
+
 #all-article-imgs {
   width: 100%;
 }
@@ -52,7 +54,17 @@ li {
   font-weight: bold;
 }
 
-.all-articles{
+.users {
+  border: solid white;
+  background-color: rgb(186, 219, 250);
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+#user {
+  background-color: white;
+}
+.all-articles {
   color: black;
 }
 
@@ -73,4 +85,39 @@ li {
   background-color: rgb(255, 121, 143);
   padding-left: 3px;
   padding-right: 3px;
+
+#comment-input {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 5px;
+  overflow: auto;
+  height: 150px;
+  width: 98%;
+  resize: none;
+}
+
+.form-input {
+  margin-top: 50px;
+}
+
+#collapsible-button {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.comment-form {
+  text-align: center;
+}
+
+#submit-button {
+  margin-bottom: 15px;
+}
+
+#network-error-msg {
+  color:rgb(177, 0, 0);
+  text-align: center;
 }
