@@ -107,3 +107,8 @@ li {
 #submit-button {
   margin-bottom: 15px;
 }
+
+#network-error-msg {
+  color:rgb(177, 0, 0);
+  text-align: center;
+}

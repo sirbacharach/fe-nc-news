@@ -10,6 +10,8 @@ const PostComment = ({ comments, setComments }) => {
   const { article_id } = useParams();
   const [newComment, setNewComment] = useState("");
   const [hasPosted, setHasPosted] = useState(false);
+  const [hasNetworkError, setHasNetworkError] = useState(false);
+  const [isEmptyComment, setIsEmptyComment] = useState(false);
 
   useEffect(() => {
     const originalComments = [...comments];
@@ -18,22 +20,30 @@ const PostComment = ({ comments, setComments }) => {
       postComment(article_id, commentToPost)
         .then((response) => {
           setComments((comments) => {
-            setHasPosted(false)
+            setHasPosted(false);
+            setHasNetworkError(false);
             return [response, ...comments];
           });
         })
         .catch((err) => {
           setComments(originalComments);
+          if (err.message === "Network Error") {
+            setHasNetworkError(true);
+          }
           if (err.message === "Request failed with status code 400") {
             alert("A users must be logged in to leave a comment.");
           }
           setHasPosted(false);
         });
+    } else if (hasPosted === true) {
+      setIsEmptyComment(true);
+      setHasPosted(false);
     }
-  }, [newComment]);
+  }, [newComment, hasPosted]);
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    setIsEmptyComment(false);
     if (hasPosted === false) {
       setHasPosted(true);
       setNewComment(input);
@@ -44,6 +54,16 @@ const PostComment = ({ comments, setComments }) => {
   return (
     <>
       <div>
+        {hasNetworkError ? (
+          <h2 id="network-error-msg">Unable to post comment at this time.</h2>
+        ) : (
+          <></>
+        )}
+        {isEmptyComment ? (
+          <h2 id="network-error-msg">Unable to accept an empty comment.</h2>
+        ) : (
+          <></>
+        )}
         <form className="comment-form" onSubmit={handleSubmit}>
           Fill in the form to post a comment:
           <label className="form-input" id="name-input-label">

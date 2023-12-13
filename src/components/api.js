@@ -21,7 +21,7 @@ const getAllUsers = () => {
 
 const getAllComments = (article_id) => {
   return api.get(`/api/articles/${article_id}/comments`).then((response) => {
-    return response.data.articleComments;
+    return response.data.articleComments.reverse();
   });
 };
 
@@ -31,6 +31,7 @@ const patchArticle = (article_id, votes) => {
 
 const postComment = (article_id, comment) => {
   return api.post(`/api/articles/${article_id}/comments`, comment).then((response)=>{
+    console.log(response)
  return response.data.addedComments[0]
   })
 };
