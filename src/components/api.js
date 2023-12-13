@@ -30,7 +30,7 @@ const patchArticle = (article_id, votes) => {
 };
 
 const postComment = (article_id, comment) => {
-  return api.post(`/api/articles/900/comments`, comment).then((response)=>{
+  return api.post(`/api/articles/${article_id}/comments`, comment).then((response)=>{
  return response.data.addedComments[0]
   })
 };

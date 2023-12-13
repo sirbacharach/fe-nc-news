@@ -9,25 +9,36 @@ const PostComment = ({ comments, setComments }) => {
   const [input, setInput] = useState("");
   const { article_id } = useParams();
   const [newComment, setNewComment] = useState("");
+  const [hasPosted, setHasPosted] = useState(false);
 
   useEffect(() => {
-    const originalComments = [...comments]
+    const originalComments = [...comments];
     if (newComment !== "") {
-      const commentToPost = { body: newComment, author:user}
+      const commentToPost = { body: newComment, author: user };
       postComment(article_id, commentToPost)
-      .then((response) => {
-      setComments((comments)=>{return [response, ...comments]})
-      })
-      .catch(()=>{
-        setComments(originalComments)
-      })
+        .then((response) => {
+          setComments((comments) => {
+            setHasPosted(false)
+            return [response, ...comments];
+          });
+        })
+        .catch((err) => {
+          setComments(originalComments);
+          if (err.message === "Request failed with status code 400") {
+            alert("A users must be logged in to leave a comment.");
+          }
+          setHasPosted(false);
+        });
     }
   }, [newComment]);
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    setNewComment(input)
-    setInput("")
+    if (hasPosted === false) {
+      setHasPosted(true);
+      setNewComment(input);
+      setInput("");
+    }
   };
 
   return (

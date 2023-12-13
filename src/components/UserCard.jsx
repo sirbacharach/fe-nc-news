@@ -6,6 +6,7 @@ const UserCard = ({ user }) => {
 
   function handleUserClick(username) {
     setUser(username);
+    alert(`${username} logged in!`);
   }
 
   return (
