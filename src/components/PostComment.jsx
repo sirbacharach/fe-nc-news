@@ -13,7 +13,6 @@ const PostComment = ({ comments, setComments }) => {
   const [hasNetworkError, setHasNetworkError] = useState(false);
   const [isEmptyComment, setIsEmptyComment] = useState(false);
 
-
   useEffect(() => {
     const originalComments = [...comments];
     if (newComment !== "") {
@@ -22,7 +21,8 @@ const PostComment = ({ comments, setComments }) => {
         .then((response) => {
           setComments((comments) => {
             setHasNetworkError(false);
-            setHasPosted(false)
+            setHasPosted(false);
+            setInput("");
             return [response, ...comments];
           });
         })
@@ -30,28 +30,29 @@ const PostComment = ({ comments, setComments }) => {
           setComments(originalComments);
           if (err.message === "Network Error") {
             setHasNetworkError(true);
-            setHasPosted(false)
+            setHasPosted(false);
           }
           if (err.message === "Request failed with status code 400") {
             alert("A users must be logged in to leave a comment.");
           }
         });
-        setNewComment("")
-
+      setNewComment("");
     } else if (hasPosted === true) {
-
     }
   }, [newComment]);
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    setHasPosted(true)
-    if (input === "") {setIsEmptyComment(true)
-    setHasPosted(false)}
-    else {setIsEmptyComment(false)}
+    setHasNetworkError(false);
+    setHasPosted(true);
+    if (input === "") {
+      setIsEmptyComment(true);
+      setHasPosted(false);
+    } else {
+      setIsEmptyComment(false);
+    }
     if (hasPosted === false) {
       setNewComment(input);
-      setInput("");
     }
   };
 
@@ -59,7 +60,7 @@ const PostComment = ({ comments, setComments }) => {
     <>
       <div>
         {hasNetworkError ? (
-          <h2 id="network-error-msg">Unable to post comment at this time.</h2>
+          <h2 id="network-error-msg">Unable to post as you are offline.</h2>
         ) : (
           <></>
         )}
@@ -81,7 +82,9 @@ const PostComment = ({ comments, setComments }) => {
               }}
             />
           </label>
-          <button id="submit-button" disabled={hasPosted}>Submit</button>
+          <button id="submit-button" disabled={hasPosted}>
+            Submit
+          </button>
         </form>
       </div>
     </>
