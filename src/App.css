@@ -137,3 +137,8 @@ li {
   color: rgb(0, 0, 0);
   font-weight: bold;
 }
+
+#dropdown {
+  display: block;
+  margin: 20px;
+}

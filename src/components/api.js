@@ -2,8 +2,12 @@ import axios from "axios";
 
 const api = axios.create({ baseURL: "https://robs-nc-news.onrender.com" });
 
-const getAllArticles = () => {
-  return api.get("/api/articles").then((response) => {
+const getAllArticles = (sort_by = "created_at", order) => {
+  return api.get(`/api/articles`,
+    {params: {
+      "sort_by": sort_by,
+      "order": order,
+    }}).then((response) => {
     return response.data.articles;
   });
 };
@@ -44,9 +48,9 @@ const postComment = (article_id, comment) => {
 };
 
 const deleteComment = (comment_id) => {
-  return api.delete(`/api/comments/${comment_id}`).then((response)=>{
-    console.log(response, "in API")
-  })
+  return api.delete(`/api/comments/${comment_id}`).then((response) => {
+    console.log(response, "in API");
+  });
 };
 
 export {
@@ -57,5 +61,5 @@ export {
   patchArticle,
   getAllTopics,
   postComment,
-  deleteComment
+  deleteComment,
 };
