@@ -2,47 +2,73 @@ import { useContext, useEffect, useState } from "react";
 import { UserContext } from "./UserContext";
 import { Link } from "react-router-dom";
 import { deleteComment } from "./api";
+import Error from "./Error";
 
 const CommentCard = ({ comment }) => {
   const [isUsersComment, setIsUsersComment] = useState(false);
   const { user } = useContext(UserContext);
   const [commentIsDeleted, setCommentIsDeleted] = useState(false);
+  const [unableToDeleteComment, setUnableToDeleteComment] = useState(false);
+  const [deleteClicked, setDeleteClicked] = useState(false);
+  const [attemptingDelete, setAttemptingDelete] = useState(false);
 
   useEffect(() => {
     if (user === comment.author) {
       setIsUsersComment(true);
     }
-    if (commentIsDeleted === true) {
-      deleteComment(comment.comment_id).catch((err) => {
-        if (err.message !== "Request failed with status code 404") {
-          setCommentIsDelted = false;
-        }
-      });
+    if (deleteClicked === true) {
+      console.log("clicked on 19");
+      deleteComment(comment.comment_id)
+        .then((response) => {
+          setCommentIsDeleted(true);
+          setDeleteClicked(false);
+          console.log("is deleted");
+          setAttemptingDelete(false)
+        })
+        .catch((err) => {
+          if (err.message === "Network Error") {
+            setCommentIsDeleted(false);
+            setUnableToDeleteComment(true);
+            setAttemptingDelete(false)
+          }
+          setDeleteClicked(false);
+        });
     }
-  }, [commentIsDeleted]);
+  }, [deleteClicked]);
 
-  function handleUserClick(comment_id) {
-    setCommentIsDeleted(true);
+  function handleUserClick() {
+    setDeleteClicked(true);
+    setAttemptingDelete(true);
   }
 
   return (
     <li className="comments">
       {commentIsDeleted ? (
-        <p id="deleted-comment">Comment Deleted</p>
+        <p id="error">Comment Deleted</p>
       ) : (
         <>
           <p>Created: {comment.created_at.slice(0, 10)}</p>
           <p>Author: {comment.author}</p>
           <p>{comment.body}</p>
           <p>Votes: {comment.votes}</p>
+          {unableToDeleteComment ? (
+            <p id="error">Unable to Delete as you are offline.</p>
+          ) : (
+            <></>
+          )}
           {isUsersComment ? (
-            <Link
+            attemptingDelete ? (
+              <p id="black-message">Attempting to delete</p>
+            ) : (
+              <Link
               onClick={() => {
-                handleUserClick(comment.comment_id);
+                handleUserClick();
               }}
             >
               Delete Comment
             </Link>
+            )
+          
           ) : (
             <></>
           )}
