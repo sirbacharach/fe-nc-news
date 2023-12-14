@@ -29,10 +29,18 @@ const patchArticle = (article_id, votes) => {
   return api.patch(`/api/articles/${article_id}`, votes);
 };
 
+const getAllTopics = () => {
+  return api.get("/api/topics").then((response) => {
+    return response.data;
+  });
+};
+
 const postComment = (article_id, comment) => {
-  return api.post(`/api/articles/${article_id}/comments`, comment).then((response)=>{
- return response.data.addedComments[0]
-  })
+  return api
+    .post(`/api/articles/${article_id}/comments`, comment)
+    .then((response) => {
+      return response.data.addedComments[0];
+    });
 };
 
 const deleteComment = (comment_id) => {
@@ -47,6 +55,7 @@ export {
   getAllUsers,
   getAllComments,
   patchArticle,
+  getAllTopics,
   postComment,
   deleteComment
 };

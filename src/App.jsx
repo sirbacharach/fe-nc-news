@@ -4,7 +4,8 @@ import Articles from "./components/Articles";
 import SingleArticle from "./components/SingleArticle";
 import Users from "./components/Users";
 import { Routes, Route } from "react-router-dom";
-import { UserProvider } from "./components/UserContext";
+import { UserProvider } from "./components/UserContext";import Topics from "./components/Topics";
+
 function App() {
   return (
     <>

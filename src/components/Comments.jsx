@@ -5,7 +5,6 @@ import CommentCard from "./CommentCard";
 import PostComment from "./PostComment";
 import Collapsible from "./Collapsible";
 
-
 const Comments = () => {
   const { article_id } = useParams();
   const [comments, setComments] = useState([]);
@@ -23,18 +22,18 @@ const Comments = () => {
 
   if (isLoading) return <p id="status-msg">Comments Loading....</p>;
 
-  if (comments.length === 0) return
+  if (comments.length === 0) return;
 
   return (
     <>
-    <Collapsible descriptor="Comments">
-      <ul className="articles">
-        <h2 id="comments-title">Comments</h2>
-        <PostComment comments={comments} setComments={setComments}/>
-        {comments.map((comment) => {
-          return <CommentCard comment={comment} key={comment.comment_id} />;
-        })}
-      </ul>
+      <Collapsible descriptor="Comments">
+        <ul className="articles">
+          <h2 id="comments-title">Comments</h2>
+          <PostComment comments={comments} setComments={setComments} />
+          {comments.map((comment) => {
+            return <CommentCard comment={comment} key={comment.comment_id} />;
+          })}
+        </ul>
       </Collapsible>
     </>
   );
