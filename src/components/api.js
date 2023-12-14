@@ -2,11 +2,12 @@ import axios from "axios";
 
 const api = axios.create({ baseURL: "https://robs-nc-news.onrender.com" });
 
-const getAllArticles = (sort_by = "created_at", order) => {
+const getAllArticles = (topic, sort_by = "created_at", order) => {
   return api.get(`/api/articles`,
     {params: {
+      "topic": topic,
       "sort_by": sort_by,
-      "order": order,
+      "order": order
     }}).then((response) => {
 
     return response.data.articles;
