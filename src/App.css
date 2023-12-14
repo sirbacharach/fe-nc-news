@@ -63,6 +63,7 @@ li {
 
 #user {
   background-color: white;
+  text-align: center;
 }
 .all-articles {
   color: black;
@@ -118,7 +119,21 @@ li {
   margin-bottom: 15px;
 }
 
-#network-error-msg {
-  color:rgb(177, 0, 0);
+#error {
   text-align: center;
+  color: red;
+  font-weight: bold;
+}
+
+#positive-message {
+  text-align: center;
+  color: rgb(0, 187, 0);
+  font-size: xx-large;
+  font-weight: bold;
+}
+
+#black-message {
+  text-align: center;
+  color: rgb(0, 0, 0);
+  font-weight: bold;
 }

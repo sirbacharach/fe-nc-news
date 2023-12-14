@@ -1,21 +1,29 @@
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { UserContext } from "./UserContext";
-const UserCard = ({ user }) => {
+const UserCard = ({ userObj }) => {
+  const { user, setUser } = useContext(UserContext);
+  const [isLoggedIn, setIsLoggedIn] = useState(false)
 
-  const { setUser } = useContext(UserContext);
+  useEffect (()=>{
+ if(user === userObj.username) {
+  setIsLoggedIn(true)
+ } else {
+  setIsLoggedIn(false)
+ }
+  }, [user]);
+
 
   function handleUserClick(username) {
     setUser(username);
-    alert(`${username} logged in!`);
-  }
+    }
 
   return (
-    <li id="user" onClick={()=>{
-      handleUserClick(user.username)
-    }}>
-      <h2>{user.username}</h2>
-      <p>{user.name}</p>
-      <img id="all-article-imgs" src={user.avatar_url} alt={user.name} />
+
+    <li id="user" onClick={() => {handleUserClick(userObj.username);}}>
+      {isLoggedIn? <h2 id="logged-in">Logged In!</h2>:<></>}
+      <h2>{userObj.username}</h2>
+      <p>{userObj.name}</p>
+      <img id="all-article-imgs" src={userObj.avatar_url} alt={userObj.name} />
     </li>
   );
 };

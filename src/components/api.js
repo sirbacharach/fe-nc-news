@@ -43,6 +43,12 @@ const postComment = (article_id, comment) => {
     });
 };
 
+const deleteComment = (comment_id) => {
+  return api.delete(`/api/comments/${comment_id}`).then((response)=>{
+    console.log(response, "in API")
+  })
+};
+
 export {
   getAllArticles,
   getSingleArticle,
@@ -51,4 +57,5 @@ export {
   patchArticle,
   getAllTopics,
   postComment,
+  deleteComment
 };

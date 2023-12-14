@@ -18,7 +18,7 @@ const Users = () => {
   return (
     <ul className="users">
       {users.map((user) => {
-        return <UserCard user={user} key={user.username} />;
+        return <UserCard userObj={user} key={user.username} />;
       })}
     </ul>
   );

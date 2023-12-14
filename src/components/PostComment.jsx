@@ -16,6 +16,7 @@ const PostComment = ({ comments, setComments }) => {
   useEffect(() => {
     const originalComments = [...comments];
     if (newComment !== "") {
+      setIsEmptyComment(false)
       const commentToPost = { body: newComment, author: user };
       postComment(article_id, commentToPost)
         .then((response) => {
@@ -43,13 +44,12 @@ const PostComment = ({ comments, setComments }) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    setHasNetworkError(false);
     setHasPosted(true);
     if (input === "") {
       setIsEmptyComment(true);
       setHasPosted(false);
     } else {
-      setIsEmptyComment(false);
+      
     }
     if (hasPosted === false) {
       setNewComment(input);
