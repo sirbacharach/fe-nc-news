@@ -2,8 +2,8 @@ import axios from "axios";
 
 const api = axios.create({ baseURL: "https://robs-nc-news.onrender.com" });
 
-const getAllArticles = () => {
-  return api.get("/api/articles").then((response) => {
+const getAllArticles = (query = "") => {
+  return api.get(`/api/articles${query}`).then((response) => {
     return response.data.articles;
   });
 };

@@ -80,6 +80,7 @@ li {
 .topics {
   text-align: center;
   padding-top: 2px;
+  padding-bottom: 4px;
   margin-top: 1px;
   border: solid red;
   background-color: rgb(255, 121, 143);
