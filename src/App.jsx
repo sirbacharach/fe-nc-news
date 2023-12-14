@@ -4,7 +4,8 @@ import Articles from "./components/Articles";
 import SingleArticle from "./components/SingleArticle";
 import Users from "./components/Users";
 import { Routes, Route } from "react-router-dom";
-import { UserProvider } from "./components/UserContext";import Topics from "./components/Topics";
+import { UserProvider } from "./components/UserContext";
+import Topics from "./components/Topics";
 
 function App() {
   return (
@@ -15,7 +16,8 @@ function App() {
         <Route path="/articles" element={<Articles />} />
         <Route path="/articles/:article_id" element={<SingleArticle />} />
         <Route path="/users" element={<Users />} />
-        <Route exact path="/" element={<Articles />} />
+        <Route path="/" element={<Articles />} />
+        <Route path="/topics" element={<Topics />} />
       </Routes>
       </UserProvider>
     </>

@@ -8,6 +8,7 @@ const getAllArticles = (sort_by = "created_at", order) => {
       "sort_by": sort_by,
       "order": order,
     }}).then((response) => {
+
     return response.data.articles;
   });
 };
