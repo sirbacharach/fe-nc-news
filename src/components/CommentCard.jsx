@@ -17,12 +17,10 @@ const CommentCard = ({ comment }) => {
       setIsUsersComment(true);
     }
     if (deleteClicked === true) {
-      console.log("clicked on 19");
       deleteComment(comment.comment_id)
         .then((response) => {
           setCommentIsDeleted(true);
           setDeleteClicked(false);
-          console.log("is deleted");
           setAttemptingDelete(false)
         })
         .catch((err) => {

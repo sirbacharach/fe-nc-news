@@ -20,7 +20,7 @@ const UserCard = ({ userObj }) => {
   return (
 
     <li id="user" onClick={() => {handleUserClick(userObj.username);}}>
-      {isLoggedIn? <h2 id="logged-in">Logged In!</h2>:<></>}
+      {isLoggedIn? <h2 id="positive-message">Logged In!</h2>:<></>}
       <h2>{userObj.username}</h2>
       <p>{userObj.name}</p>
       <img id="all-article-imgs" src={userObj.avatar_url} alt={userObj.name} />
