@@ -1,53 +1,43 @@
 import { useEffect, useState } from "react";
 import { getAllArticles } from "./api";
 import ArticleCard from "./ArticleCard";
-import { Link, useSearchParams } from "react-router-dom";
+import { Link, useLocation, useSearchParams } from "react-router-dom";
 
 const Articles = () => {
   const [articles, setArticles] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [sortBy, setSortBy] = useState("created_at");
-  const [order, setOrder] = useState("ASC");
-  const [orderText, setOrderText] = useState("descending");
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [orderText, setOrderText] = useState("Sort Descending");
   const [error, setError] = useState(false);
-
-  let topic = "";
-  if (searchParams.get("topic")) {
-    topic = searchParams.get("topic");
-  }
+  const [searchParams, setSearchParams] = useSearchParams();
+  const [order, setOrder] = useState(searchParams.get("order"));
+  const [sortBy, setSortBy] = useState(searchParams.get("sort_by"));
+  const [topic, setTopic] = useState(searchParams.get("topic"));
+  const [buttonClicked, setButtonClicked] = useState(false)
 
   useEffect(() => {
-    getAllArticles(topic, sortBy, order)
-      .then((response) => {
-        setArticles(response);
-        setIsLoading(false);
-        if(topic !== "") {
-          setSearchParams(`?topic=${topic}&sort_by=${sortBy}&order=${order}`);
-        } else{
-        setSearchParams(`?sort_by=${sortBy}&order=${order}`);
-      }
-      })
-      .catch((err) => {
-        console.log(err.message);
-        if (err.message === "Network Error") {
-          setError("Failed to load as you are not online.");
-        }
-      });
-  }, [sortBy, order]);
+    getAllArticles(topic, sortBy, order).then((response) => {
+      setArticles(response);
+      setIsLoading(false);
+      const newParams = new URLSearchParams(searchParams);
+      if (topic !== null) newParams.set('topic', topic);
+      if (sortBy !== null) newParams.set('sort_by', sortBy);
+      if (order !== null) newParams.set('order', order)
+      setSearchParams(newParams);
+    });
+  }, [buttonClicked]);
 
   function handleUserClick(sort_by) {
-    setSortBy(sort_by);
+  setSortBy(sort_by)
+  setButtonClicked(!buttonClicked)
   }
 
   function handleOrderClick() {
-    if (order === "DESC") {
-      setOrder("ASC");
-      setOrderText("Sort Ascending");
-    } else {
-      setOrder("DESC");
-      setOrderText("Sort Descending");
-    }
+  if (order === "DESC") {
+    setOrder("ASC")
+  } else {
+    setOrder("DESC")
+  }
+  setButtonClicked(!buttonClicked)
   }
 
   if (error) {
