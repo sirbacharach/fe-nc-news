@@ -3,19 +3,30 @@ import { useParams } from "react-router-dom";
 import { getSingleArticle } from "./api";
 import { patchArticle } from "./api";
 import Comments from "./Comments";
+import Error from "./Error";
 
 const SingleArticle = () => {
   const [article, setArticle] = useState({});
   const [isLoading, setIsLoading] = useState(true);
   const { article_id } = useParams();
+  const [apiError, setApiError] = useState("");
 
   useEffect(() => {
-    getSingleArticle(article_id).then((response) => {
-      setArticle(response);
-      setIsLoading(false);
-    });
+    getSingleArticle(article_id)
+      .then((response) => {
+        setArticle(response);
+        setIsLoading(false);
+      })
+      .catch((err) => {
+        setApiError(err);
+        setIsLoading(false);
+      });
   }, []);
-  if (isLoading) return <p id="status-msg">Content Loading....</p>;
+  if (isLoading) {
+    return <p id="status-msg">Content Loading....</p>;
+  } else if (apiError) {
+    return <Error message={apiError.message} />;
+  }
 
   const DownVote = () => {
     const articleWithNewVotes = { ...article };

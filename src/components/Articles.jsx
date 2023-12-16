@@ -1,18 +1,17 @@
 import { useEffect, useState } from "react";
 import { getAllArticles } from "./api";
 import ArticleCard from "./ArticleCard";
-import { Link, useLocation, useSearchParams } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 
 const Articles = () => {
   const [articles, setArticles] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [orderText, setOrderText] = useState("Sort Descending");
-  const [error, setError] = useState(false);
   const [searchParams, setSearchParams] = useSearchParams();
   const [order, setOrder] = useState(searchParams.get("order"));
   const [sortBy, setSortBy] = useState(searchParams.get("sort_by"));
   const [topic, setTopic] = useState(searchParams.get("topic"));
   const [buttonClicked, setButtonClicked] = useState(false)
+  const [apiError, setApiError] = useState("");
 
   useEffect(() => {
     getAllArticles(topic, sortBy, order).then((response) => {
@@ -23,7 +22,11 @@ const Articles = () => {
       if (sortBy !== null) newParams.set('sort_by', sortBy);
       if (order !== null) newParams.set('order', order)
       setSearchParams(newParams);
-    });
+    })
+    .catch((err)=>{
+      setApiError(err);
+      setIsLoading(false);
+    })
   }, [buttonClicked]);
 
   function handleUserClick(sort_by) {
@@ -34,18 +37,18 @@ const Articles = () => {
   function handleOrderClick() {
   if (order === "DESC") {
     setOrder("ASC")
-    setOrderText("Sort Ascending")
   } else {
     setOrder("DESC")
-    setOrderText("Sort Descending")
   }
   setButtonClicked(!buttonClicked)
   }
 
-  if (error) {
-    return <h2 id="status-msg">{error}</h2>;
+  if (isLoading){
+    return <p id="status-msg">Articles Loading....</p>;
   }
-  if (isLoading) return <p id="status-msg">Articles Loading....</p>;
+  else if (apiError) {
+    return <Error message={apiError.message} />;
+  }
 
   return (
     <section >
@@ -77,13 +80,13 @@ const Articles = () => {
           handleOrderClick();
         }}
       >
-        Sort: ascending
+        Sort Ascending
       </Link> : <Link
         onClick={() => {
           handleOrderClick();
         }}
       >
-        Sort: descending
+        Sort Descending
       </Link>}
 
 

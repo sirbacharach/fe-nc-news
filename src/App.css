@@ -143,3 +143,9 @@ li {
   display: block;
   margin: 20px;
 }
+
+.error {
+  font-size: x-large;
+  color: rgb(0, 0, 0);
+text-align: center;
+}
