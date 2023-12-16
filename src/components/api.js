@@ -45,13 +45,14 @@ const postComment = (article_id, comment) => {
   return api
     .post(`/api/articles/${article_id}/comments`, comment)
     .then((response) => {
+      console.log(response, "in Post API")
       return response.data.addedComments[0];
     });
 };
 
 const deleteComment = (comment_id) => {
-  return api.delete(`/api/comments/${comment_id}`).then((response) => {
-    console.log(response, "in API");
+  return api.delete(`/api/comments/${comment_id}`).then(() => {
+    return
   });
 };
 

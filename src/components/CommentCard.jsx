@@ -2,7 +2,6 @@ import { useContext, useEffect, useState } from "react";
 import { UserContext } from "./UserContext";
 import { Link } from "react-router-dom";
 import { deleteComment } from "./api";
-import Error from "./Error";
 
 const CommentCard = ({ comment }) => {
   const [isUsersComment, setIsUsersComment] = useState(false);
@@ -18,25 +17,31 @@ const CommentCard = ({ comment }) => {
     }
     if (deleteClicked === true) {
       deleteComment(comment.comment_id)
-        .then((response) => {
+        .then(() => {
           setCommentIsDeleted(true);
+          setAttemptingDelete(false);
           setDeleteClicked(false);
-          setAttemptingDelete(false)
         })
         .catch((err) => {
+          console.log(err);
+          console.log("you have an error.");
+          if (err.message === "Request failed with status code 404") {
+            setCommentIsDeleted(true);
+            setAttemptingDelete(false);
+          }
           if (err.message === "Network Error") {
             setCommentIsDeleted(false);
             setUnableToDeleteComment(true);
-            setAttemptingDelete(false)
           }
+          setAttemptingDelete(false);
           setDeleteClicked(false);
         });
     }
   }, [deleteClicked]);
 
   function handleUserClick() {
-    setDeleteClicked(true);
     setAttemptingDelete(true);
+    setDeleteClicked(true);
   }
 
   return (
@@ -59,14 +64,13 @@ const CommentCard = ({ comment }) => {
               <p id="black-message">Attempting to delete</p>
             ) : (
               <Link
-              onClick={() => {
-                handleUserClick();
-              }}
-            >
-              Delete Comment
-            </Link>
+                onClick={() => {
+                  handleUserClick();
+                }}
+              >
+                Delete Comment
+              </Link>
             )
-          
           ) : (
             <></>
           )}

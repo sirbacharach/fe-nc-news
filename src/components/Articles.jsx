@@ -34,8 +34,10 @@ const Articles = () => {
   function handleOrderClick() {
   if (order === "DESC") {
     setOrder("ASC")
+    setOrderText("Sort Ascending")
   } else {
     setOrder("DESC")
+    setOrderText("Sort Descending")
   }
   setButtonClicked(!buttonClicked)
   }
@@ -46,42 +48,51 @@ const Articles = () => {
   if (isLoading) return <p id="status-msg">Articles Loading....</p>;
 
   return (
-    <>
+    <section >
       Sort By:
-      <Link
+      {sortBy === "created_at"? <>Date created</> : <Link
         onClick={() => {
           handleUserClick("created_at");
         }}
       >
         Date created
-      </Link>{" "}
-      <Link
+      </Link>}{" "}
+        {sortBy === "votes"? <>Votes</> : <Link
         onClick={() => {
           handleUserClick("votes");
         }}
       >
         Votes
-      </Link>{" "}
-      <Link
+      </Link>}{" "}
+
+{sortBy === "comment_count"? <>Comment Count</> : <Link
         onClick={() => {
           handleUserClick("comment_count");
         }}
       >
         Comment Count
-      </Link>{" "}
-      <Link
+      </Link>}{" "}
+      {searchParams.get("order") === "DESC"? <Link
         onClick={() => {
           handleOrderClick();
         }}
       >
-        {orderText}
-      </Link>
+        Sort: ascending
+      </Link> : <Link
+        onClick={() => {
+          handleOrderClick();
+        }}
+      >
+        Sort: descending
+      </Link>}
+
+
       <ul className="articles">
         {articles.map((article) => {
           return <ArticleCard article={article} key={article.article_id} />;
         })}
       </ul>
-    </>
+    </section>
   );
 };
 
