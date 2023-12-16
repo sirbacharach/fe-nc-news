@@ -1,18 +1,23 @@
 body {
-  background-color: rgb(176, 207, 168);
+  background-color: rgb(240, 240, 255);
 }
 
 .header {
-  border: solid rgb(97, 158, 216);
+  border-radius: 10px;
   background-color: rgb(186, 219, 250);
   text-align: center;
+  padding: 1px;
+  margin-top: 2px;
+  margin-bottom: 4px;
 }
 
 .single-item {
-  border: solid red;
-  background-color: rgb(255, 121, 143);
-  padding-left: 10px;
-  padding-right: 10px;
+  border-radius: 10px;
+  padding-top: 2px;
+  margin-top: 1px;
+  background-color: rgb(208, 220, 241);
+  padding-left: 7px;
+  padding-right: 7px;
   padding-bottom: 10px;
 }
 
@@ -22,7 +27,7 @@ body {
 
 li {
   list-style: none;
-  border: solid black;
+  /* border: solid black; */
   margin-left: 0px;
   margin-right: 0px;
   margin-top: 2px;
@@ -30,9 +35,9 @@ li {
 }
 
 .comments {
+  border-radius: 10px;
   list-style: none;
-  background-color: rgb(179, 205, 178);
-  border: solid rgb(8, 131, 26);
+  background-color: rgb(186, 206, 243);
   margin-left: 0px;
   margin-right: 0px;
   margin-top: 2px;
@@ -40,10 +45,10 @@ li {
 }
 
 .articles {
+  border-radius: 10px;
   padding-top: 2px;
   margin-top: 1px;
-  border: solid red;
-  background-color: rgb(255, 121, 143);
+  background-color: rgb(208, 220, 241);
   padding-left: 3px;
   padding-right: 3px;
 }
@@ -55,15 +60,20 @@ li {
 }
 
 .users {
+  border-radius: 10px;;
   border: solid white;
   background-color: rgb(186, 219, 250);
-  padding-left: 10px;
-  padding-right: 10px;
+  padding-top: 7px;
+  padding-left: 7px;
+  padding-right: 7px;
 }
 
 #user {
+  border-radius: 10px;
   background-color: white;
   text-align: center;
+  margin-top: 1px;
+  margin-bottom: 8px;
 }
 .all-articles {
   color: black;
@@ -79,14 +89,11 @@ li {
 }
 
 .topics {
+  border-radius: 10px;
   text-align: center;
-  padding-top: 2px;
-  padding-bottom: 4px;
   margin-top: 1px;
-  border: solid red;
-  background-color: rgb(255, 121, 143);
-  padding-left: 3px;
-  padding-right: 3px;
+  background-color: rgb(208, 220, 241);
+  padding: 7px;
 }
 
 #comment-input {
@@ -139,13 +146,22 @@ li {
   font-weight: bold;
 }
 
-#dropdown {
-  display: block;
-  margin: 20px;
-}
-
 .error {
+  border-radius: 10px;
   font-size: x-large;
   color: rgb(0, 0, 0);
 text-align: center;
+}
+
+.topic {
+  border-radius: 10px;
+  background-color: rgb(186, 206, 243);
+  text-align: center;
+  padding: 1px;
+
+  color: black;
+}
+
+#article-title {
+  text-align: center;
 }

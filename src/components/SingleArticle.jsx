@@ -52,7 +52,7 @@ const SingleArticle = () => {
   return (
     <>
       <div className="single-item">
-        <h2>{article.title}</h2>
+        <h2 id="article-title">{article.title}</h2>
         <img
           id="all-article-imgs"
           src={article.article_img_url}

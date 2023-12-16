@@ -37,6 +37,7 @@ const PostComment = ({ comments, setComments }) => {
             setHasPosted(false);
           }
           if (err.message === "Request failed with status code 400") {
+            setHasPosted(false)
             alert("A users must be logged in to leave a comment.");
           }
         });
