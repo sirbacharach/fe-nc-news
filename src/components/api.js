@@ -45,7 +45,6 @@ const postComment = (article_id, comment) => {
   return api
     .post(`/api/articles/${article_id}/comments`, comment)
     .then((response) => {
-      console.log(response, "in Post API")
       return response.data.addedComments[0];
     });
 };

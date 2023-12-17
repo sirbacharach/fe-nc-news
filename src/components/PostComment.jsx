@@ -24,12 +24,10 @@ const PostComment = ({ comments, setComments }) => {
             setHasNetworkError(false);
             setHasPosted(false);
             setInput("");
-            console.log("post successful")
             return [response, ...comments];
           });
         })
         .catch((err) => {
-          console.log(err, "posting error")
           setComments(originalComments);
           if (err.message === "Network Error") {
             
@@ -47,7 +45,6 @@ const PostComment = ({ comments, setComments }) => {
   }, [newComment]);
 
   const handleSubmit = (event) => {
-    console.log(article_id)
     event.preventDefault();
     setHasPosted(true);
     if (input === "") {

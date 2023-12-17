@@ -4,11 +4,10 @@ body {
 
 .header {
   border-radius: 10px;
-  background-color: rgb(186, 219, 250);
+  background-color: rgb(186, 206, 243);
   text-align: center;
   padding: 1px;
   margin-top: 2px;
-  margin-bottom: 4px;
 }
 
 .single-item {
@@ -60,8 +59,7 @@ li {
 }
 
 .users {
-  border-radius: 10px;;
-  border: solid white;
+  border-radius: 10px;
   background-color: rgb(186, 219, 250);
   padding-top: 7px;
   padding-left: 7px;
@@ -81,11 +79,6 @@ li {
 
 #article-title {
   text-align: center;
-}
-
-#comments-title {
-  text-align: center;
-  margin: 8px;
 }
 
 .topics {
@@ -150,7 +143,7 @@ li {
   border-radius: 10px;
   font-size: x-large;
   color: rgb(0, 0, 0);
-text-align: center;
+  text-align: center;
 }
 
 .topic {
@@ -158,10 +151,37 @@ text-align: center;
   background-color: rgb(186, 206, 243);
   text-align: center;
   padding: 1px;
-
   color: black;
 }
 
 #article-title {
   text-align: center;
+}
+
+.sort {
+  display: inline-block;
+  margin-left: 3px;
+  margin-right: 0px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.order {
+  display: inline-block;
+  margin-left: 5px;
+  margin-right: 5px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  float: right;
+}
+
+#comment-count {
+  margin: 0px;
+  padding: 0px;
+}
+
+#comments-title {
+  font-size: xx-large;
+  text-align: center;
+  margin: 0px;
 }

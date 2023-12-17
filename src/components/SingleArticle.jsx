@@ -62,7 +62,6 @@ const SingleArticle = () => {
         <p>{article.author}</p>
         <p>{article.body}</p>
         <p>Topic: {article.topic}</p>
-        <p>Comments: {article.comment_count}</p>
         <p>Votes: {article.votes}</p>
         <button className="vote-button" onClick={DownVote}>
           Down Vote

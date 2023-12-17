@@ -23,7 +23,6 @@ const Comments = () => {
   if (isLoading) return <p id="status-msg">Comments Loading....</p>;
 
   if (comments.length === 0) return;
-
   return (
     <>
       <Collapsible descriptor="Comments">

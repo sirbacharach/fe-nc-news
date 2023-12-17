@@ -23,8 +23,6 @@ const CommentCard = ({ comment }) => {
           setDeleteClicked(false);
         })
         .catch((err) => {
-          console.log(err);
-          console.log("you have an error.");
           if (err.message === "Request failed with status code 404") {
             setCommentIsDeleted(true);
             setAttemptingDelete(false);
