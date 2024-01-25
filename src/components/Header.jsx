@@ -29,7 +29,7 @@ function articlesClicked () {
 
   return (
     <div className="header light-font-colour">
-      {user ? <p className="loggedin">'{user}' is logged in.</p> : <p className="loggedin">Click Users link to log in</p>}
+      {user ? <p className="loggedin">'{user}' is logged in.</p> : <p className="loggedin">Click Users button to log in</p>}
       <h1>NC-NEWS</h1>
 
       <div className="pages-section">
