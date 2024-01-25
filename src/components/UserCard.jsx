@@ -23,7 +23,7 @@ const UserCard = ({ userObj }) => {
       {isLoggedIn? <h2 id="positive-message">Logged In!</h2>:<></>}
       <h2>{userObj.username}</h2>
       <p>{userObj.name}</p>
-      <img id="all-article-imgs" src={userObj.avatar_url} alt={userObj.name} />
+      <img className="user-image" id="all-article-imgs" src={userObj.avatar_url} alt={userObj.name} />
     </li>
   );
 };

@@ -1,13 +1,65 @@
 body {
-  background-color: rgb(240, 240, 255);
+  background-color: black;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+.main-background {
+  background-color: black;
+}
+
+.light-font-colour {
+color: white;
 }
 
 .header {
+  text-decoration: none;
   border-radius: 10px;
-  background-color: rgb(186, 206, 243);
+  background-color: rgb(0, 25, 71);
   text-align: center;
   padding: 1px;
-  margin-top: 2px;
+}
+
+.loggedin {
+  margin: 0px;
+  margin-top: .6rem;
+  margin-bottom: .2rem;
+}
+
+h1 {
+  margin: 0px;
+  font-weight:bolder;
+}
+
+h2 {
+  margin: 0px;
+}
+
+.pages-section {
+  margin-top: .3rem;
+  display: flex;
+  padding: 0px;
+  align-self:center;
+  margin-bottom: .3rem;
+  justify-content:space-around;
+}
+
+.pages {
+  display: block;
+  text-decoration: none;
+  background-color: rgb(37, 20, 185);
+  color: white;
+  text-align: center;
+  padding-left: .3rem;
+  padding-right: .3rem;
+  border-radius: 10%;
+}
+
+.pages:hover {
+  box-shadow: 0px 0px 10px 1px white;
+}
+
+.pages-selected {
+  box-shadow: 0px 0px 10px 1px white;
 }
 
 .single-item {
@@ -21,7 +73,7 @@ body {
 }
 
 #all-article-imgs {
-  width: 100%;
+
 }
 
 li {
@@ -60,19 +112,32 @@ li {
 
 .users {
   border-radius: 10px;
-  background-color: rgb(186, 219, 250);
-  padding-top: 7px;
-  padding-left: 7px;
-  padding-right: 7px;
-}
+  background-color: rgb(0, 44, 85);
+  display: flex;
+  flex-wrap: wrap;
+  padding-top: 0.3rem;
+  padding-left: 0.3rem;
+  padding-right: 0.3rem;
+  justify-content:space-around;
+  }
 
 #user {
+  display: block;
+  flex-basis: 45%;
   border-radius: 10px;
   background-color: white;
   text-align: center;
-  margin-top: 1px;
-  margin-bottom: 8px;
+  margin-bottom: 0.4rem;
+  font-size: small;
 }
+
+.user-image {
+  border: 1px solid #dddddd;
+  border-radius: 4px;
+  padding: 5px;
+  height: 100px;
+}
+
 .all-articles {
   color: black;
 }
@@ -129,7 +194,7 @@ li {
 #positive-message {
   text-align: center;
   color: rgb(0, 187, 0);
-  font-size: xx-large;
+  font-size: large;
   font-weight: bold;
 }
 
