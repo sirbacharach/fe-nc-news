@@ -10,7 +10,6 @@ const Articles = () => {
   const [order, setOrder] = useState(searchParams.get("order"));
   const [sortBy, setSortBy] = useState(searchParams.get("sort_by"));
   const [topic, setTopic] = useState(searchParams.get("topic"));
-  const [buttonClicked, setButtonClicked] = useState(false);
   const [apiError, setApiError] = useState("");
 
   useEffect(() => {
@@ -28,92 +27,55 @@ const Articles = () => {
         setApiError(err);
         setIsLoading(false);
       });
-  }, [buttonClicked]);
+  }, [sortBy, order]);
 
-  function handleUserClick(sort_by) {
-    setSortBy(sort_by);
-    setButtonClicked(!buttonClicked);
+  function handleSortChange(event) {
+    setSortBy(event.target.value);
   }
 
-  function handleOrderClick() {
-    if (order === "DESC") {
-      setOrder("ASC");
-    } else {
-      setOrder("DESC");
-    }
-    setButtonClicked(!buttonClicked);
+  function handleOrderChange(event) {
+    setOrder(event.target.value);
   }
 
   if (isLoading) {
-    return <p id="status-msg">Articles Loading....</p>;
   } else if (apiError) {
     return <Error message={apiError.message} />;
   }
 
   return (
-    <section>
-      Sort By:
-      {sortBy === "created_at" ? (
-        <span className="sort">Date created</span>
-      ) : (
-        <Link
-        className="sort"
-          onClick={() => {
-            handleUserClick("created_at");
-          }}
-        >
-          Date created
-        </Link>
-      )}{" "}
-      {sortBy === "votes" ? (
-        <span className="sort">Votes</span>
-      ) : (
-        <Link
-        className="sort"
-          onClick={() => {
-            handleUserClick("votes");
-          }}
-        >
-          Votes
-        </Link>
-      )}{" "}
-      {sortBy === "comment_count" ? (
-        <span className="sort">Comment Count</span>
-      ) : (
-        <Link
-        className="sort"
-          onClick={() => {
-            handleUserClick("comment_count");
-          }}
-        >
-          Comment Count
-        </Link>
-      )}{" "}
-      {searchParams.get("order") === "DESC" ? (
-        <Link
-        className="order"
-          onClick={() => {
-            handleOrderClick();
-          }}
-        >
-          Sort Ascending
-        </Link>
-      ) : (
-        <Link
-        className="order"
-          onClick={() => {
-            handleOrderClick();
-          }}
-        >
-          Sort Descending
-        </Link>
-      )}
-      <ul className="articles">
+    <div className="sort-container light-font-colour">
+      <div className="sort-order-container">
+        <div>
+        <label>
+          Sort by:
+          <select onChange={handleSortChange}>
+            <option value="created_at">Date Created</option>
+
+            <option value="votes">Votes</option>
+
+            <option value="comment_count">Comment Count</option>
+          </select>
+        </label>
+      </div>
+
+      <div>
+        <label>
+          Sort by:
+          <select onChange={handleOrderChange}>
+            <option value="ASC">Ascending</option>
+
+            <option value="DESC">Descending</option>
+
+          </select>
+        </label>
+      </div>
+      </div>
+      <ul className="articles outer-container-colour light-font-colour">
         {articles.map((article) => {
           return <ArticleCard article={article} key={article.article_id} />;
         })}
       </ul>
-    </section>
+    </div>
   );
 };
 

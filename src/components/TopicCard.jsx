@@ -6,7 +6,7 @@ const TopicCard = ({ topic }) => {
       to={`/articles?topic=${topic.slug.toLowerCase()}`}
       style={{ textDecoration: "none" }}
           >
-      <li className="topic">
+      <li className="topic inner-container-colour light-font-colour">
         {" "}
         <h2>
           {topic.slug.slice(0, 1).toUpperCase() +

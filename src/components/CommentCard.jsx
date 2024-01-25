@@ -54,7 +54,7 @@ const CommentCard = ({ comment, setRefreshComments }) => {
   }
 
   return (
-    <li className="comments">
+    <li className="comments inner-container-colour light-font-colour">
       {commentIsDeleted ? (
         <p id="error">Comment Deleted</p>
       ) : (
@@ -74,7 +74,7 @@ const CommentCard = ({ comment, setRefreshComments }) => {
             ) : timerRunning ? (
               <>Delete Comment</>
             ) : (
-              <Link
+              <Link className="delete-button"
                 onClick={() => {
                   handleUserClick();
                 }}

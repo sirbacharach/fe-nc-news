@@ -51,7 +51,7 @@ const SingleArticle = () => {
 
   return (
     <>
-      <div className="single-item">
+      <div className="single-item inner-container-colour light-font-colour">
         <h2 id="article-title">{article.title}</h2>
         <img
           id="all-article-imgs"

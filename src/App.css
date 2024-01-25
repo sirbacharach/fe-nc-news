@@ -1,14 +1,25 @@
 body {
   background-color: black;
   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  max-width:1000px;
+  margin:0 auto;
 }
 
 .main-background {
   background-color: black;
+  color: white;
 }
 
 .light-font-colour {
 color: white;
+}
+
+.outer-container-colour {
+  background-color: rgb(0, 44, 85);
+}
+
+.inner-container-colour{
+  background-color: rgba(0, 12, 66, 0.952);
 }
 
 .header {
@@ -17,6 +28,7 @@ color: white;
   background-color: rgb(0, 25, 71);
   text-align: center;
   padding: 1px;
+  margin-bottom: 1rem;
 }
 
 .loggedin {
@@ -26,8 +38,10 @@ color: white;
 }
 
 h1 {
+  font-size:xxx-large;
   margin: 0px;
   font-weight:bolder;
+  padding-bottom: .5rem;
 }
 
 h2 {
@@ -46,7 +60,7 @@ h2 {
 .pages {
   display: block;
   text-decoration: none;
-  background-color: rgb(37, 20, 185);
+  background-color: rgb(19, 0, 185);
   color: white;
   text-align: center;
   padding-left: .3rem;
@@ -66,14 +80,13 @@ h2 {
   border-radius: 10px;
   padding-top: 2px;
   margin-top: 1px;
-  background-color: rgb(208, 220, 241);
   padding-left: 7px;
   padding-right: 7px;
   padding-bottom: 10px;
 }
 
 #all-article-imgs {
-
+width: 100%;
 }
 
 li {
@@ -88,7 +101,6 @@ li {
 .comments {
   border-radius: 10px;
   list-style: none;
-  background-color: rgb(186, 206, 243);
   margin-left: 0px;
   margin-right: 0px;
   margin-top: 2px;
@@ -99,7 +111,6 @@ li {
   border-radius: 10px;
   padding-top: 2px;
   margin-top: 1px;
-  background-color: rgb(208, 220, 241);
   padding-left: 3px;
   padding-right: 3px;
 }
@@ -139,19 +150,30 @@ li {
 }
 
 .all-articles {
-  color: black;
 }
 
 #article-title {
   text-align: center;
 }
 
+.article-card {
+  margin-bottom: 1rem;
+  border-radius: 4px;
+  padding: .7rem;
+}
+
 .topics {
   border-radius: 10px;
   text-align: center;
   margin-top: 1px;
-  background-color: rgb(208, 220, 241);
-  padding: 7px;
+  padding: .6rem;
+}
+
+.topic {
+  border-radius: 10px;
+  text-align: center;
+  padding: 1rem;
+  margin: .5rem;
 }
 
 #comment-input {
@@ -211,14 +233,6 @@ li {
   text-align: center;
 }
 
-.topic {
-  border-radius: 10px;
-  background-color: rgb(186, 206, 243);
-  text-align: center;
-  padding: 1px;
-  color: black;
-}
-
 #article-title {
   text-align: center;
 }
@@ -232,6 +246,12 @@ li {
   margin-bottom: 5px;
 }
 
+.sort-order-container{
+  display: flex;
+  justify-content: space-around;
+  padding-bottom: .7rem;
+}
+
 .order {
   font-size: 15px;
   display: inline-block;
@@ -239,6 +259,7 @@ li {
   margin-right: 5px;
   margin-top: 5px;
   margin-bottom: 5px;
+  padding-right: .2rem;
   float: right;
 }
 
@@ -251,4 +272,51 @@ li {
   font-size: xx-large;
   text-align: center;
   margin: 0px;
+}
+
+.delete-button {
+  color: red;
+}
+
+@media only screen and (min-width: 768px) {
+  body {
+  }
+
+  .users {
+    display: flex 50% 50% 0;
+    }
+
+    #user {
+      flex-basis:auto;
+      font-size: small;
+    }
+
+.articles{
+  padding-top: 5%;
+  padding-left: 20%;
+  padding-right: 20%;
+  padding-bottom: 5%;
+}
+
+.single-item{
+  padding-top: 5%;
+  padding-left: 20%;
+  padding-right: 20%;
+  padding-bottom: 5%;
+}
+
+.topics {
+  border-radius: 10px;
+  text-align: center;
+  margin-top: 1px;
+  padding: 70px;
+}
+
+.topic {
+  font-size:x-large;
+  border-radius: 10px;
+  text-align: center;
+  padding: 1rem;
+}
+
 }

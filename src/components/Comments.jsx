@@ -29,7 +29,7 @@ const Comments = () => {
   return (
     <>
       <Collapsible descriptor="Comments">
-        <ul className="articles">
+        <ul className="articles light-font-colour">
           <p>Total Comments: {comments.length}</p>
           <h2 id="comments-title">Comments</h2>
           <PostComment comments={comments} setComments={setComments} />

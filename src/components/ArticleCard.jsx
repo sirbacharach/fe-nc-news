@@ -2,11 +2,11 @@ import { Link } from "react-router-dom";
 
 const ArticleCard = ({ article }) => {
   return (
-    <li>
+    <li className="inner-container-colour article-card">
 
       <Link
         to={`/articles/${article.article_id}`}
-        className="all-articles"
+        className="all-articles light-font-colour"
         style={{ textDecoration: "none" }}
       >
         <h2 id="article-title">{article.title}</h2>

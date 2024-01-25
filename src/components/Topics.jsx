@@ -28,7 +28,7 @@ const Topics = () => {
 
   return (
     <>
-      <ul className="topics">
+      <ul className="topics outer-container-colour">
         {topics.map((topic) => {
           return <TopicCard topic={topic} key={topic.slug} />;
         })}
