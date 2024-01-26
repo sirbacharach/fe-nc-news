@@ -3,11 +3,10 @@ import { UserContext } from "./UserContext";
 import { Link } from "react-router-dom";
 
 const Header = () => {
-  const { user } = useContext(UserContext);
+const { user } = useContext(UserContext);
 const [userButton, setUserButton] = useState(false)
 const [articlesButton, setArticlesButton] = useState(true)
 const [topicsButton, setTopicsButton] = useState(false)
-
 
 function userClicked () {
 setUserButton(true)

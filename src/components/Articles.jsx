@@ -43,9 +43,25 @@ const Articles = () => {
   }
 
   return (
+
+
+    
     <div className="sort-container light-font-colour">
       <div className="sort-order-container">
         <div>
+        <label>
+          Topic:
+          <select onChange={handleSortChange}>
+            <option value="created_at">Date Created</option>
+
+            <option value="votes">Votes</option>
+
+            <option value="comment_count">Comment Count</option>
+          </select>
+        </label>
+      </div>
+
+      <div>
         <label>
           Sort by:
           <select onChange={handleSortChange}>
