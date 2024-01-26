@@ -13,15 +13,19 @@ const Articles = () => {
   const [apiError, setApiError] = useState("");
 
   useEffect(() => {
+    console.log("Topic = ", topic)
+    console.log("Order = ", order)
+    console.log("Sort By = ", sortBy)
     getAllArticles(topic, sortBy, order)
       .then((response) => {
         setArticles(response);
-        setIsLoading(false);
         const newParams = new URLSearchParams(searchParams);
         if (topic !== null) newParams.set("topic", topic);
         if (sortBy !== null) newParams.set("sort_by", sortBy);
         if (order !== null) newParams.set("order", order);
-        setSearchParams(newParams);
+        setSearchParams(newParams)
+      }).then(() => {
+        setIsLoading(false);
       })
       .catch((err) => {
         setApiError(err);
@@ -29,24 +33,45 @@ const Articles = () => {
       });
   }, [sortBy, order, topic]);
 
+  if (topic === null) setTopic("")
+  if (sortBy === null) setSortBy("created_at")
+  if (order === null) setOrder("DESC")
+
   function handleSortChange(event) {
+    event.preventDefault()
     setSortBy(event.target.value);
+    setIsLoading(true)
   }
 
   function handleOrderChange(event) {
+    event.preventDefault()
     setOrder(event.target.value);
+    setIsLoading(true)
   }
 
   function handleTopicChange(event) {
+    event.preventDefault()
     console.log(event.target.value);
     if (event.target.value === "") {
       setTopic(undefined);
+      setIsLoading(true)
     } else {
       setTopic(event.target.value);
+      setIsLoading(true)
     }
   }
 
   if (isLoading) {
+    return (
+      <div className="loading-container">
+        <p className="light-font-colour" id="status-msg">
+          Please Wait
+        </p>
+        <p className="light-font-colour" id="status-msg">
+          Articles are Loading....
+        </p>
+      </div>
+    );
   } else if (apiError) {
     return <Error message={apiError.message} />;
   }
@@ -57,7 +82,7 @@ const Articles = () => {
         <div className="sort-menu">
           <label>
             Topic:
-            <select onChange={handleTopicChange}>
+            <select value={topic} onChange={handleTopicChange}>
               <option value="">All</option>
               <option value="coding">Coding</option>
               <option value="football">Football</option>
@@ -69,7 +94,7 @@ const Articles = () => {
         <div className="sort-menu">
           <label>
             Sort by:
-            <select onChange={handleSortChange}>
+            <select value={sortBy} onChange={handleSortChange}>
               <option value="created_at">Date Created</option>
               <option value="votes">Votes</option>
               <option value="comment_count">Comment Count</option>
@@ -80,7 +105,7 @@ const Articles = () => {
         <div className="sort-menu">
           <label>
             Sort by:
-            <select onChange={handleOrderChange}>
+            <select value={order} onChange={handleOrderChange}>
               <option value="ASC">Ascending</option>
               <option value="DESC">Descending</option>
             </select>
@@ -95,7 +120,6 @@ const Articles = () => {
           })}
         </ul>
       </div>
-
     </div>
   );
 };

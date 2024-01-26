@@ -10,7 +10,8 @@ const Users = () => {
   useEffect(() => {
     getAllUsers()
       .then((users) => {
-        setUsers(users);
+        setUsers(users)
+      }).then(() => {
         setIsLoading(false);
       })
       .catch((err) => {
@@ -19,12 +20,22 @@ const Users = () => {
           setError("Failed to load as you are not online.");
         }
       });
-  }, []);
+  }, [isLoading]);
 
   if (error) {
     return <h2 id="status-msg">{error}</h2>;
   }
-  if (isLoading) return <p id="status-msg">Users List Loading....</p>;
+  if (isLoading)
+    return (
+      <div className="loading-container">
+        <p className="light-font-colour" id="status-msg">
+          Please Wait
+        </p>
+        <p className="light-font-colour" id="status-msg">
+          Users List Loading....
+        </p>
+      </div>
+    );
 
   return (
     <ul className="users">

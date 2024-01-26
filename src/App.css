@@ -233,6 +233,17 @@ li {
   font-weight: bold;
 }
 
+.loading-container {
+display: block;
+  justify-content: center;
+  border: solid white;
+  align-self: center;
+}
+
+.loading-message{
+  grid-row: 1;
+}
+
 #positive-message {
   text-align: center;
   color: rgb(0, 187, 0);
