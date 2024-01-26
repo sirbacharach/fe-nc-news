@@ -38,11 +38,11 @@ const Articles = () => {
   }
 
   function handleTopicChange(event) {
-    console.log(event.target.value)
+    console.log(event.target.value);
     if (event.target.value === "") {
-      setTopic(undefined)
+      setTopic(undefined);
     } else {
-      setTopic(event.target.value)
+      setTopic(event.target.value);
     }
   }
 
@@ -52,50 +52,49 @@ const Articles = () => {
   }
 
   return (
-    <div className="sort-container light-font-colour">
+    <div className="light-font-colour">
+      <div className="sort-menus-container">
+        <div className="sort-menu">
+          <label>
+            Topic:
+            <select onChange={handleTopicChange}>
+              <option value="">All</option>
+              <option value="coding">Coding</option>
+              <option value="football">Football</option>
+              <option value="cooking">Cooking</option>
+            </select>
+          </label>
+        </div>
 
-      <div className="sort-order-container">
+        <div className="sort-menu">
+          <label>
+            Sort by:
+            <select onChange={handleSortChange}>
+              <option value="created_at">Date Created</option>
+              <option value="votes">Votes</option>
+              <option value="comment_count">Comment Count</option>
+            </select>
+          </label>
+        </div>
 
-        <div>
-        <label>
-          Topic:
-          <select onChange={handleTopicChange}>
-            <option value="">All</option>
-            <option value="coding">Coding</option>
-            <option value="football">Football</option>
-            <option value="cooking">Cooking</option>
-          </select>
-        </label>
+        <div className="sort-menu">
+          <label>
+            Sort by:
+            <select onChange={handleOrderChange}>
+              <option value="ASC">Ascending</option>
+              <option value="DESC">Descending</option>
+            </select>
+          </label>
+        </div>
       </div>
 
-      <div>
-        <label>
-          Sort by:
-          <select onChange={handleSortChange}>
-            <option value="created_at">Date Created</option>
-            <option value="votes">Votes</option>
-            <option value="comment_count">Comment Count</option>
-          </select>
-        </label>
+      <div className="articles-container">
+        <ul className="articles outer-container-colour light-font-colour">
+          {articles.map((article) => {
+            return <ArticleCard article={article} key={article.article_id} />;
+          })}
+        </ul>
       </div>
-
-      <div>
-        <label>
-          Sort by:
-          <select onChange={handleOrderChange}>
-            <option value="ASC">Ascending</option>
-            <option value="DESC">Descending</option>
-          </select>
-        </label>
-      </div>
-
-      </div>
-
-      <ul className="articles outer-container-colour light-font-colour">
-        {articles.map((article) => {
-          return <ArticleCard article={article} key={article.article_id} />;
-        })}
-      </ul>
 
     </div>
   );
