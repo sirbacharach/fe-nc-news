@@ -88,6 +88,7 @@ h2 {
 
 #all-article-imgs {
 width: 100%;
+margin-top: .8rem;
 }
 
 li {
@@ -108,13 +109,6 @@ li {
   padding: 5px;
 }
 
-.articles {
-  border-radius: 10px;
-  padding-top: 2px;
-  margin-top: 1px;
-  padding-left: 3px;
-  padding-right: 3px;
-}
 
 #status-msg {
   text-align: center;
@@ -131,7 +125,7 @@ li {
   padding-left: 0.3rem;
   padding-right: 0.3rem;
   justify-content:space-around;
-  }
+}
 
 #user {
   display: block;
@@ -150,7 +144,23 @@ li {
   height: 100px;
 }
 
+.articles-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
 .all-articles {
+}
+
+.articles {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  border-radius: 10px;
+  padding-top: 2px;
+  margin-top: 1px;
+  padding-left: 3px;
+  padding-right: 3px;
 }
 
 #article-title {
@@ -161,6 +171,15 @@ li {
   margin-bottom: 1rem;
   border-radius: 4px;
   padding: .7rem;
+}
+
+#article-title {
+  text-align: center;
+}
+
+.article-text-gap {
+  margin:0;
+  margin-top: .4rem;
 }
 
 .topics {
@@ -234,10 +253,6 @@ li {
   text-align: center;
 }
 
-#article-title {
-  text-align: center;
-}
-
 .sort {
   font-size: 15px;
   display: inline-block;
@@ -247,10 +262,14 @@ li {
   margin-bottom: 5px;
 }
 
-.sort-order-container{
+.sort-menus-container{
   display: flex;
   justify-content: space-around;
   padding-bottom: .7rem;
+}
+
+.sort-menu {
+  text-align: center;
 }
 
 .order {
@@ -318,6 +337,10 @@ li {
   border-radius: 10px;
   text-align: center;
   padding: 1rem;
+}
+
+.article-card{
+ width: 40%;
 }
 
 }
