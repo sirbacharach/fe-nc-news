@@ -27,7 +27,7 @@ const Articles = () => {
         setApiError(err);
         setIsLoading(false);
       });
-  }, [sortBy, order]);
+  }, [sortBy, order, topic]);
 
   function handleSortChange(event) {
     setSortBy(event.target.value);
@@ -37,6 +37,15 @@ const Articles = () => {
     setOrder(event.target.value);
   }
 
+  function handleTopicChange(event) {
+    console.log(event.target.value)
+    if (event.target.value === "") {
+      setTopic(undefined)
+    } else {
+      setTopic(event.target.value)
+    }
+  }
+
   if (isLoading) {
   } else if (apiError) {
     return <Error message={apiError.message} />;
@@ -44,15 +53,27 @@ const Articles = () => {
 
   return (
     <div className="sort-container light-font-colour">
+
       <div className="sort-order-container">
+
         <div>
+        <label>
+          Topic:
+          <select onChange={handleTopicChange}>
+            <option value="">All</option>
+            <option value="coding">Coding</option>
+            <option value="football">Football</option>
+            <option value="cooking">Cooking</option>
+          </select>
+        </label>
+      </div>
+
+      <div>
         <label>
           Sort by:
           <select onChange={handleSortChange}>
             <option value="created_at">Date Created</option>
-
             <option value="votes">Votes</option>
-
             <option value="comment_count">Comment Count</option>
           </select>
         </label>
@@ -63,18 +84,19 @@ const Articles = () => {
           Sort by:
           <select onChange={handleOrderChange}>
             <option value="ASC">Ascending</option>
-
             <option value="DESC">Descending</option>
-
           </select>
         </label>
       </div>
+
       </div>
+
       <ul className="articles outer-container-colour light-font-colour">
         {articles.map((article) => {
           return <ArticleCard article={article} key={article.article_id} />;
         })}
       </ul>
+
     </div>
   );
 };
