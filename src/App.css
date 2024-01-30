@@ -41,7 +41,7 @@ color: white;
 h1 {
   font-size:xxx-large;
   margin: 0px;
-  font-weight:bolder;
+  font-weight:400;
   padding-bottom: .5rem;
 }
 
@@ -113,7 +113,7 @@ li {
 #status-msg {
   text-align: center;
   font-size: larger;
-  font-weight: bold;
+  font-weight: 300;
 }
 
 .users {
@@ -230,7 +230,7 @@ li {
 #error {
   text-align: center;
   color: red;
-  font-weight: bold;
+  font-weight: 300;
 }
 
 .loading-container {
@@ -248,13 +248,13 @@ display: block;
   text-align: center;
   color: rgb(0, 187, 0);
   font-size: large;
-  font-weight: bold;
+  font-weight: 300;
 }
 
 #black-message {
   text-align: center;
   color: rgb(0, 0, 0);
-  font-weight: bold;
+  font-weight: 300;
 }
 
 .error {
