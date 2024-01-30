@@ -13,9 +13,6 @@ const Articles = () => {
   const [apiError, setApiError] = useState("");
 
   useEffect(() => {
-    console.log("Topic = ", topic)
-    console.log("Order = ", order)
-    console.log("Sort By = ", sortBy)
     getAllArticles(topic, sortBy, order)
       .then((response) => {
         setArticles(response);
@@ -51,7 +48,6 @@ const Articles = () => {
 
   function handleTopicChange(event) {
     event.preventDefault()
-    console.log(event.target.value);
     if (event.target.value === "") {
       setTopic(undefined);
       setIsLoading(true)
