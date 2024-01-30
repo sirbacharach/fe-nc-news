@@ -93,7 +93,6 @@ margin-top: .8rem;
 
 li {
   list-style: none;
-  /* border: solid black; */
   margin-left: 0px;
   margin-right: 0px;
   margin-top: 2px;
@@ -360,6 +359,12 @@ display: block;
 
 .article-card{
  width: 40%;
+}
+
+.no-comments-left {
+  text-align: center;
+  color: white;
+  font-weight: 100;
 }
 
 }

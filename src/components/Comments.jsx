@@ -15,7 +15,9 @@ const Comments = () => {
   useEffect(() => {
     getAllComments(article_id).then((response) => {
       setComments(response);
-    });
+    }).catch((err)=>{
+      setComments([])
+    })
     getSingleArticle(article_id).then((response) => {
       setArticle(response);
       setIsLoading(false);
@@ -27,28 +29,17 @@ const Comments = () => {
 
   if (isLoading) return <p id="status-msg">Comments Loading....</p>;
 
-  if (comments.length === 0) {
-    return (
+return (
       <>
-        <p>Total Comments: {comments.length}</p>
+       <p className="light-font-colour">Total Comments: {comments.length}</p>
         <Collapsible descriptor="Comments">
           <ul className="comments light-font-colour">
             <h2 id="comments-title">Comments</h2>
+            <>
             <PostComment comments={comments} setComments={setComments} />
-          </ul>
-        </Collapsible>
-      </>
-    );
- } else {
-    return (
-      <>
-        <p>Total Comments: {comments.length}</p>
-        <Collapsible descriptor="Comments">
-          <ul className="comments light-font-colour">
-            <h2 id="comments-title">Comments</h2>
-            <PostComment comments={comments} setComments={setComments} />
-
-            {comments.map((comment) => {
+            </>
+            <>
+            {comments.length? <>{comments.map((comment) => {
               return (
                 <CommentCard
                   comment={comment}
@@ -56,12 +47,12 @@ const Comments = () => {
                   key={comment.comment_id}
                 />
               );
-            })}
+            })}</> : <h2 className="no-comments-left">No Comments Yet!</h2>}
+                        </>
           </ul>
         </Collapsible>
       </>
     );
-  }
 };
 
 export default Comments;
